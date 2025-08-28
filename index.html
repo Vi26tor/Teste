@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botão da Alegria</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #fce4ec;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #000000;
+    }
+
+    .botoes {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+    }
+
+    .botao {
+      position: absolute;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: top 0.3s ease, left 0.3s ease;
+    }
+
+    #botaoNao {
+      background-color: #ff0400;
+      color: white;
+    }
+
+    #botaoSim {
+      background-color: #00ff0d;
+      color: white;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vamo sair hoje?</h1>
+
+  <div class="botoes">
+    <button class="botao" id="botaoNao">Não</button>
+    <button class="botao" id="botaoSim" onclick="location.href='IMG_7763.png'">Sim</button>
+  </div>
+
+  <script>
+    const botaoNao = document.getElementById('botaoNao');
+
+    function moverBotaoNao() {
+      const container = document.querySelector('.botoes');
+      const larguraContainer = container.clientWidth;
+      const alturaContainer = container.clientHeight;
+
+      const larguraBotao = botaoNao.offsetWidth;
+      const alturaBotao = botaoNao.offsetHeight;
+
+      const novaPosX = Math.random() * (larguraContainer - larguraBotao);
+      const novaPosY = Math.random() * (alturaContainer - alturaBotao);
+
+      botaoNao.style.left = `${novaPosX}px`;
+      botaoNao.style.top = `${novaPosY}px`;
+    }
+
+    botaoNao.addEventListener('click', moverBotaoNao);
+    botaoNao.addEventListener('touchstart', moverBotaoNao);
+
+    moverBotaoNao(); // posição inicial aleatória
+  </script>
+
+</body>
+</html>
